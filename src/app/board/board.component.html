@@ -1,0 +1,12 @@
+<div class="board">
+  <mat-grid-list cols="3" rowHeight="20px">
+    <mat-grid-tile *ngFor="let cell of gameService.cells"
+                   (click)="checkCell(cell)"
+                   [ngClass]="{'full': cell.isFull()}">
+      {{cell.checked | showValue }}
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+<button mat-button (click)="gameService.newGame()">Start new Game?</button>
+
