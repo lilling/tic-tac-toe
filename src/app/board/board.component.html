@@ -2,7 +2,11 @@
   <mat-grid-list cols="3" rowHeight="1:1">
     <mat-grid-tile *ngFor="let cell of gameService.cells"
                    (click)="checkCell(cell)"
-                   [ngClass]="{'full': cell.isFull()}">
+                   [ngClass]="{'full': cell.isFull(),
+                                'x': cell.checked === checkedState.X,
+                                'o': cell.checked === checkedState.O,
+                               'x-turn': !cell.isFull() && gameService.getCurrentTurn() === checkedState.X,
+                               'o-turn': !cell.isFull() && gameService.getCurrentTurn() === checkedState.O}">
       <i *ngIf="cell.checked === checkedState.X" class="material-icons">clear</i>
       <i *ngIf="cell.checked === checkedState.O" class="material-icons">radio_button_unchecked</i>
     </mat-grid-tile>

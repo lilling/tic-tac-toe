@@ -1,3 +1,5 @@
+@import '../../styles.scss';
+
 .board {
   width: 100%;
 
@@ -8,11 +10,26 @@
       transition: 0.5s;
       border-radius: 3px;
       border-width: 3px;
-      &:hover {
-        background: aqua;
+      &.x-turn {
+        &:hover {
+          background: $x-color;
+        }
       }
+      &.o-turn {
+        &:hover {
+          background: $o-color;
+        }
+      }
+
       &.full {
         cursor: default;
+        &.x {
+          background: $x-color;
+        }
+
+        &.o {
+          background: $o-color;
+        }
       }
     }
   }
