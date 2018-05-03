@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Cell} from './models/cell';
 import {CheckedState} from './models/checked-state.enum';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {User} from './models/user';
 
 @Injectable()
 export class GameService {
@@ -12,12 +13,8 @@ export class GameService {
   ];
   cells: Cell[];
   turnsNumber: number;
-  users = [CheckedState.X, CheckedState.O];
+  users: User[] = [ new User(CheckedState.X), new User(CheckedState.O)];
   winner: BehaviorSubject<CheckedState> = new BehaviorSubject<CheckedState>(CheckedState.None);
-  score = {
-    [CheckedState.X]: 0,
-    [CheckedState.O]: 0,
-  };
   gameEnded: boolean;
 
   constructor() {
@@ -34,7 +31,7 @@ export class GameService {
   }
 
   checkCell(cell: Cell) {
-    cell.checked = this.users[this.turnsNumber % 2];
+    cell.checked = this.users[this.turnsNumber % 2].state;
     this.turnsNumber++;
     const winner = this.processTurn(cell.checked);
 
@@ -65,8 +62,8 @@ export class GameService {
   }
 
   endGame(winner: CheckedState) {
-    if (winner === CheckedState.None) {
-      this.score[winner]++;
+    if (winner !== CheckedState.None) {
+      this.users.find(user => user.state === winner).score++;
     }
     this.gameEnded = true;
     this.winner.next(winner);
