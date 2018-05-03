@@ -10,9 +10,13 @@ import {GameService} from '../game.service';
 })
 export class GameFinishedComponent {
   CheckedState = CheckedState;
+  text: string;
+
   constructor(public gameService: GameService,
     public dialogRef: MatDialogRef<GameFinishedComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { winner: CheckedState }) { }
+    @Inject(MAT_DIALOG_DATA) public data: { winner: CheckedState }) {
+    this.text = data.winner === CheckedState.None ? 'its a Draw' : `the winner is: ${CheckedState[data.winner]}`;
+  }
 
   newGame(): void {
     this.gameService.newGame();
