@@ -1,7 +1,8 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Best Game Ever!!
-  </h1>
+<h1>Best Game Ever!!</h1>
+<div class="container">
   <app-board></app-board>
+  <app-score-board></app-score-board>
 </div>
+<h1>
+  <button mat-button (click)="gameService.newGame()">Start new Game?</button>
+</h1>

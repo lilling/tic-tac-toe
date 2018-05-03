@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { BoardComponent } from './board/board.component';
 import {GameService} from './game.service';
 import { ShowValue } from './show-value.pipe';
+import { ScoreBoardComponent } from './score-board/score-board.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     BoardComponent,
-    ShowValue
+    ShowValue,
+    ScoreBoardComponent
   ],
   imports: [
     BrowserAnimationsModule,

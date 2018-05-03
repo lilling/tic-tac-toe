@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {GameService} from '../game.service';
 import {Cell} from '../models/cell';
 import {CheckedState} from '../models/checked-state.enum';
@@ -9,6 +9,7 @@ import {CheckedState} from '../models/checked-state.enum';
   styleUrls: ['./board.component.scss']
 })
 export class BoardComponent {
+  checkedState = CheckedState;
   constructor(public gameService: GameService) {
   }
 

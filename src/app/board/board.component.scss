@@ -1,21 +1,16 @@
 .board {
-  margin-top: 25px;
-  margin-left: 40%;
-  margin-right: 40%;
+  width: 100%;
 
   mat-grid-list {
     mat-grid-tile {
       cursor: pointer;
-      &:nth-child(2), &:nth-child(5), &:nth-child(8) {
-        border-left: 1px solid black;
-        border-right: 1px solid black;
+      background: azure;
+      transition: 0.5s;
+      border-radius: 3px;
+      border-width: 3px;
+      &:hover {
+        background: aqua;
       }
-
-      &:nth-child(4), &:nth-child(5), &:nth-child(6) {
-        border-top: 1px solid black;
-        border-bottom: 1px solid black;
-      }
-
       &.full {
         cursor: default;
       }

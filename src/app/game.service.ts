@@ -12,6 +12,10 @@ export class GameService {
   cells: Cell[];
   turnsNumber: number;
   users = [CheckedState.X, CheckedState.O];
+  score = {
+    [CheckedState.X]: 0,
+    [CheckedState.O]: 0,
+  };
   gameEnded: boolean;
 
   constructor() {
@@ -56,9 +60,10 @@ export class GameService {
 
   endGame(winner: CheckedState) {
     if (winner === CheckedState.None) {
-      setTimeout(() => alert('its a draw'));
+      setTimeout(() => alert('its a draw'), 50);
     } else {
-      setTimeout(() => alert(`'the winner is: ${CheckedState[winner]}`));
+      this.score[winner]++;
+      setTimeout(() => alert(`'the winner is: ${CheckedState[winner]}`), 50);
     }
     this.gameEnded = true;
   }
